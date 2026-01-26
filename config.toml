@@ -4,10 +4,6 @@ width=600
 
 background_color_rgb=[39, 119, 20]
 
-[assets]
-# Stores the path to the card image files; something like:
-# king_svg="assets/king_image.svg"
-
 [misc]
 fps = 60
 

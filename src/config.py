@@ -17,14 +17,11 @@ class Config:
         # NOTE: avoid config.get() to have custom key error
         try:
             window = config["window"]
-            assets = config["assets"]
             misc   = config["misc"]
 
             self.height = window["height"]
             self.width  = window["width"]
             self.background_rgb = tuple(window["background_color_rgb"])
-
-            # TODO: Add images to the assets folder and update this section
 
             self.fps = misc["fps"]
 

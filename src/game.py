@@ -1,4 +1,5 @@
 from .config import Config
+from .deck import Deck
 
 import pygame
 from pygame import Surface, time
@@ -8,14 +9,16 @@ class Game:
         pygame.init()
         pygame.display.set_caption("Waterfall blackjack game")
 
-        self.fps = config.fps
+        self.fps: int = config.fps
         self.clock: time.Clock = pygame.time.Clock()
 
         self.screen: Surface = pygame.display.set_mode((config.width, config.height))
         self.screen.fill(config.background_rgb)
 
+        self.deck = Deck()
+
     def start_game_loop(self) -> None:
         while True:
             self.clock.tick(self.fps)
-            pygame.display.flip() 
+            pygame.display.flip()
 
