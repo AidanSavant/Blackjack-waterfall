@@ -9,7 +9,7 @@ Install Python from here: https://www.python.org/downloads/release/python-31311/
 
 Install Pygame using this command:
 ```
-pip install pygame
+pip install pygame tomllib
 ```
 
 Extract the .zip file and run main.py by double clicking it and selecting python.
