@@ -1,7 +1,8 @@
 from .config import Config
 
 from .models.deck import Deck
-from .models.card import Card
+from .models.player import Player
+from .models.dealer import Dealer
 
 import pygame
 from pygame import Surface, time
@@ -24,12 +25,8 @@ class Game:
         self.screen.fill(background_rgb)
 
     def _init_players(self) -> None:
-        # NOTE: 2nd facedown card handled lazily, will only fetch it from the deck when the player hits
-        # so in the "handle_hit_event" you'll append another deal_card() to the dealer handle and 
-        # render it
-
-        self.dealer_hand: list[Card] = self.deck.deal_card()
-        self.player_hand: list[Card] = [self.deck.deal_card() for _ in range(2)]
+        self.dealer: Dealer = Dealer(self.deck)
+        self.player: Player = Player(self.deck)
 
     def start_game_loop(self) -> None:
         # TODO: Start drawing the player/dealer hand, the deck, and the hit/stand buttons
