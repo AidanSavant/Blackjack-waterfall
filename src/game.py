@@ -58,10 +58,7 @@ class Game:
 
         self.ui_state = "END"
 
-
     def start_game_loop(self) -> None:
-        # TODO: Start drawing the player/dealer hand, the deck, and the hit/stand buttons
-
         running = True
 
         # game state
@@ -89,6 +86,11 @@ class Game:
                                 self.dealer_score += 1
                                 self.ui_state = "END"
 
+                            elif self.player.hand.is_blackjack:
+                                self.message = "BLACKJACK!"
+                                self.player_score += 1
+                                self.ui_state = "END"
+
                         elif self.ui.stand_btn.clicked(pos):
                             self.message = "Dealer's Turn"
                             self.ui_state = "DEALER"
@@ -97,10 +99,10 @@ class Game:
                     if self.ui_state == "END":
                         if event.key == pygame.K_r:
                             self.reset_round()
+
                         if event.key == pygame.K_q:
                             running = False
 
-            # Dealer logic
             if self.ui_state == "DEALER":
                 now = pygame.time.get_ticks()
 
